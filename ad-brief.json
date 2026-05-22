@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "1.0",
+  "sourceUrl": "https://www.florencebymills.com/",
+  "generatedAt": "2026-05-21T00:00:00.000Z",
+  "mode": "defaults",
+  "status": "draft",
+  "sourceType": "ecommerce_product",
+  "classificationConfidence": 0.92,
+  "classificationReasons": [
+    "Shopify storefront detected",
+    "Product categories: Beauty, Fashion, Bags, Eyewear, Pets",
+    "Brand founded by Millie Bobby Brown"
+  ],
+  "productName": "Florence by Mills",
+  "goal": "purchase",
+  "cta": "Shop the Collection",
+  "audience": "Gen Z and young millennial women",
+  "hookFocus": "curiosity",
+  "creativeRoute": "product close-up",
+  "proofPlan": {
+    "allowed": ["Vegan", "Cruelty-free", "Clean beauty"],
+    "blocked": [],
+    "notes": "Claims observed from official website meta/structured data."
+  },
+  "assetPlan": {
+    "status": "confirmed",
+    "rightsStatus": "public_reference",
+    "required": ["logo", "hero image", "skincare set", "brand campaign visual"],
+    "harvested": [
+      "logo-menu.png",
+      "hero-mobile.jpg",
+      "hero-desktop.jpg",
+      "skincare-set.jpg",
+      "mbb-love.jpg",
+      "product-design.jpg",
+      "product-design-1.jpg",
+      "product-design-3.jpg",
+      "block-1.jpg",
+      "block-2.jpg",
+      "block-3.jpg",
+      "nyc-shot.png"
+    ],
+    "notes": "12 assets harvested from Shopify CDN. Rights status: public reference — user should verify commercial use."
+  },
+  "format": {
+    "preset": "vertical-9x16",
+    "width": 1080,
+    "height": 1920,
+    "renderScale": 0.5,
+    "draftWidth": 540,
+    "draftHeight": 960
+  },
+  "durationSeconds": 15,
+  "audioMode": "sfx-only",
+  "interactionPlan": {
+    "preferredMode": "structured_choices",
+    "fallbackMode": "text",
+    "instructions": "User selected: vertical 9:16, product close-up, SFX only.",
+    "requiredChoiceQuestionIds": ["format", "creativeRoute", "audioMode"],
+    "choiceQuestions": [],
+    "openQuestions": []
+  },
+  "unansweredQuestions": [],
+  "assumptions": [
+    "Free shipping threshold ($50+) is a common ecommerce default, not confirmed from page.",
+    "Brand colors #7069BC, #E4E3F3 extracted from page CSS."
+  ],
+  "blockers": []
+}

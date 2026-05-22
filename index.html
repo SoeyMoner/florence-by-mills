@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>florence by mills &#8212; clean beauty that feels like you</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --purple: #7069BC;
+  --purple-light: #9A94E0;
+  --purple-pale: #D5D1F0;
+  --purple-deep: #4A4580;
+  --teal: #0E7A82;
+  --navy: #272D45;
+  --cream: #FDFBF7;
+  --gray-bg: #F4F4F6;
+  --gray-border: #E5E5EB;
+  --text: #272D45;
+  --text-muted: #676986;
+  --white: #FFFFFF;
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-body: "Outfit", system-ui, sans-serif;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --transition: 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--text); background: var(--cream); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--gray-bg); }
+::-webkit-scrollbar-thumb { background: var(--purple-pale); border-radius: 3px; }
+
+/* Nav */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 18px 48px; display: flex; align-items: center; justify-content: space-between; transition: var(--transition); }
+.nav.scrolled { background: rgba(253,251,247,0.88); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 12px 48px; box-shadow: 0 1px 0 var(--gray-border); }
+.nav-logo { font-family: var(--font-heading); font-size: 26px; font-weight: 600; color: var(--purple); letter-spacing: -0.5px; cursor: pointer; }
+.nav-logo span { font-style: italic; font-weight: 400; }
+.nav-links { display: flex; gap: 32px; align-items: center; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--navy); font-size: 13px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; transition: color 0.2s; position: relative; }
+.nav-links a::after { content: ""; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px; background: var(--purple); transition: width 0.3s; }
+.nav-links a:hover { color: var(--purple); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta { background: var(--purple); color: var(--white) !important; padding: 10px 22px !important; border-radius: 50px; font-size: 12px !important; }
+.nav-cta:hover { background: var(--purple-deep); }
+.nav-cta::after { display: none !important; }
+
+/* Hero */
+.hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; background: linear-gradient(170deg, #FDFBF7 0%, #F0EDF8 40%, #E8E4F5 100%); }
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 48px; position: relative; z-index: 1; }
+.hero-content { padding-right: 20px; }
+.hero-eyebrow { font-family: var(--font-body); font-size: 12px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; }
+.hero-title { font-family: var(--font-heading); font-size: clamp(42px, 6vw, 68px); font-weight: 500; line-height: 1.08; color: var(--navy); margin-bottom: 20px; }
+.hero-title em { font-style: italic; color: var(--purple); }
+.hero-subtitle { font-size: 15px; color: var(--text-muted); font-weight: 300; max-width: 440px; line-height: 1.7; text-wrap: pretty; margin-bottom: 32px; }
+.hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: 50px; font-family: var(--font-body); font-size: 13px; font-weight: 500; letter-spacing: 0.3px; cursor: pointer; border: none; text-decoration: none; transition: all var(--transition); }
+.btn-primary { background: var(--purple); color: var(--white); }
+.btn-primary:hover { background: var(--purple-deep); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(112,105,188,0.3); }
+.btn-outline { background: transparent; color: var(--navy); border: 1.5px solid var(--gray-border); }
+.btn-outline:hover { border-color: var(--purple); color: var(--purple); transform: translateY(-2px); }
+.hero-visual { display: flex; align-items: center; justify-content: center; }
+.hero-img { width: 100%; max-width: 440px; border-radius: var(--radius); box-shadow: 0 30px 80px rgba(39,45,69,0.12); animation: fadeInUp 1s ease-out; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Sections */
+.section { padding: 80px 48px; max-width: 1280px; margin: 0 auto; }
+.section-label { font-size: 11px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+.section-title { font-family: var(--font-heading); font-size: clamp(30px, 4vw, 48px); font-weight: 500; color: var(--navy); margin-bottom: 14px; line-height: 1.15; }
+.section-desc { font-size: 15px; color: var(--text-muted); max-width: 520px; line-height: 1.7; text-wrap: pretty; }
+
+/* Brand Story */
+.brand-story { padding: 80px 48px; }
+.bs-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.bs-img { width: 100%; border-radius: var(--radius); box-shadow: 0 20px 60px rgba(39,45,69,0.08); }
+.bs-text p { font-size: 15px; color: var(--text-muted); line-height: 1.8; text-wrap: pretty; margin-bottom: 20px; }
+
+/* Photo Strip */
+.photo-strip { padding: 0 0 80px; overflow: hidden; }
+.photo-strip-inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+.photo-strip-title { text-align: center; margin-bottom: 36px; }
+.photo-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.photo-item { aspect-ratio: 3/4; border-radius: var(--radius); overflow: hidden; cursor: pointer; transition: all var(--transition); }
+.photo-item:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(39,45,69,0.1); }
+.photo-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.photo-item:hover img { transform: scale(1.05); }
+
+/* Values */
+.values { padding: 80px 48px; background: linear-gradient(180deg, #FDFBF7 0%, #F0EDF8 50%, #FDFBF7 100%); }
+.values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; max-width: 1000px; margin: 44px auto 0; text-align: center; }
+.value-card { padding: 32px 20px; }
+.value-icon { width: 64px; height: 64px; border-radius: 50%; background: var(--white); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 16px rgba(112,105,188,0.08); }
+.value-icon svg { width: 28px; height: 28px; }
+.value-title { font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+.value-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; text-wrap: pretty; }
+
+/* Categories */
+.categories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+.category-card { position: relative; border-radius: var(--radius); overflow: hidden; cursor: pointer; aspect-ratio: 3/4; display: flex; align-items: flex-end; padding: 28px; transition: all var(--transition); }
+.category-card:hover { transform: translateY(-6px); }
+.cc-skincare { background: linear-gradient(180deg, transparent 35%, rgba(112,105,188,0.08) 100%), #F0EDF8; }
+.cc-makeup { background: linear-gradient(180deg, transparent 35%, rgba(14,122,130,0.06) 100%), #EDF5F6; }
+.cc-fragrance { background: linear-gradient(180deg, transparent 35%, rgba(112,105,188,0.05) 100%), #F5F0F5; }
+.category-badge { position: absolute; top: 20px; left: 20px; background: var(--white); padding: 5px 12px; border-radius: 50px; font-size: 10px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: var(--purple); }
+.category-img { position: absolute; top: 32%; left: 50%; transform: translate(-50%, -50%); width: 130px; height: 130px; object-fit: contain; opacity: 0.9; }
+.category-card-content h3 { font-family: var(--font-heading); font-size: 26px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+.category-card-content p { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+.category-link { font-size: 12px; font-weight: 500; color: var(--purple); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: gap 0.3s; }
+.category-card:hover .category-link { gap: 10px; }
+
+/* Products */
+.products-wrap { background: linear-gradient(180deg, #FDFBF7 0%, #F5F0F8 100%); padding: 80px 48px; }
+.products-inner { max-width: 1280px; margin: 0 auto; }
+.products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px; }
+.product-card { background: var(--white); border-radius: var(--radius); overflow: hidden; transition: all var(--transition); cursor: pointer; border: 1px solid transparent; }
+.product-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(39,45,69,0.08); border-color: var(--gray-border); }
+.product-image { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: var(--gray-bg); }
+.product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.product-card:hover .product-image img { transform: scale(1.05); }
+.product-tag { position: absolute; top: 10px; left: 10px; background: var(--purple); color: var(--white); font-size: 9px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 50px; z-index: 1; }
+.product-info { padding: 16px; }
+.product-category { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 4px; font-weight: 500; }
+.product-name { font-family: var(--font-heading); font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 8px; line-height: 1.3; }
+.product-price { font-size: 14px; font-weight: 500; color: var(--purple); }
+
+/* Fragrance */
+.fragrance { padding: 80px 0; background: var(--white); }
+.fragrance-inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+.fragrance-header { text-align: center; margin-bottom: 40px; }
+.fragrance-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.fragrance-card { border-radius: var(--radius); overflow: hidden; text-align: center; padding: 32px 24px; transition: all var(--transition); cursor: pointer; background: var(--gray-bg); }
+.fragrance-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(39,45,69,0.06); }
+.fragrance-card-img { width: 100%; max-width: 180px; aspect-ratio: 3/4; object-fit: cover; margin: 0 auto 16px; display: block; border-radius: var(--radius-sm); }
+.fragrance-name { font-family: var(--font-heading); font-size: 20px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+.fragrance-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+/* Instagram */
+.instagram { padding: 80px 0; }
+.instagram-inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+.instagram-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 36px; flex-wrap: wrap; gap: 16px; }
+.instagram-stats { display: flex; gap: 32px; }
+.insta-stat-number { font-family: var(--font-heading); font-size: 32px; font-weight: 600; color: var(--purple); }
+.insta-stat-label { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); }
+.instagram-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+.insta-tile { aspect-ratio: 1; border-radius: var(--radius-sm); overflow: hidden; cursor: pointer; transition: all var(--transition); position: relative; }
+.insta-tile:hover { transform: scale(1.03); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+.insta-tile img { width: 100%; height: 100%; object-fit: cover; }
+.insta-tile-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; background: rgba(39,45,69,0.35); }
+.insta-tile:hover .insta-tile-overlay { opacity: 1; }
+.insta-tile-overlay span { color: white; font-size: 20px; font-weight: 500; }
+
+/* Newsletter */
+.newsletter { padding: 80px 48px; text-align: center; background: linear-gradient(170deg, #F0EDF8 0%, #E8E4F5 50%, #F0EDF8 100%); }
+.newsletter-inner { max-width: 520px; margin: 0 auto; }
+.newsletter-form { display: flex; gap: 8px; margin-top: 28px; background: var(--white); border-radius: 50px; padding: 5px; border: 1.5px solid var(--gray-border); transition: border-color 0.3s; }
+.newsletter-form:focus-within { border-color: var(--purple); }
+.newsletter-form input { flex: 1; border: none; outline: none; padding: 12px 18px; font-family: var(--font-body); font-size: 14px; color: var(--text); background: transparent; }
+.newsletter-form input::placeholder { color: var(--text-muted); }
+.newsletter-form button { background: var(--purple); color: var(--white); border: none; padding: 12px 28px; border-radius: 50px; font-family: var(--font-body); font-size: 13px; font-weight: 500; cursor: pointer; transition: all var(--transition); white-space: nowrap; }
+.newsletter-form button:hover { background: var(--purple-deep); }
+
+/* Footer */
+.footer { padding: 56px 48px 28px; background: var(--navy); color: rgba(255,255,255,0.7); }
+.footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+.footer-brand { font-family: var(--font-heading); font-size: 22px; color: var(--white); margin-bottom: 12px; font-weight: 600; }
+.footer-desc { font-size: 13px; line-height: 1.7; max-width: 260px; }
+.footer-col h4 { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--white); margin-bottom: 16px; font-weight: 500; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 8px; }
+.footer-col a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 13px; transition: color 0.2s; }
+.footer-col a:hover { color: var(--purple-light); }
+.footer-bottom { max-width: 1280px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; font-size: 12px; }
+
+/* Reveal */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* Tweaks */
+.tweaks-toggle { position: fixed; bottom: 20px; right: 20px; width: 40px; height: 40px; border-radius: 50%; background: var(--navy); color: white; border: none; cursor: pointer; font-size: 16px; z-index: 10000; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0,0,0,0.2); transition: all var(--transition); }
+.tweaks-toggle:hover { background: var(--purple); transform: scale(1.05); }
+.tweaks-panel { position: fixed; bottom: 72px; right: 20px; width: 260px; background: rgba(24,24,27,0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-radius: 14px; padding: 18px; color: #fff; font-size: 12px; z-index: 9999; box-shadow: 0 20px 60px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); display: none; }
+.tweaks-panel.open { display: block; }
+.tweaks-panel h3 { font-size: 13px; font-weight: 600; margin-bottom: 14px; letter-spacing: 0.5px; }
+.tweak-group { margin-bottom: 14px; }
+.tweak-group > label { display: block; margin-bottom: 5px; opacity: 0.7; font-size: 10px; letter-spacing: 0.5px; text-transform: uppercase; }
+.tweak-group input[type="range"] { width: 100%; accent-color: var(--purple); }
+.tweak-group input[type="color"] { width: 100%; height: 28px; border: none; border-radius: 6px; cursor: pointer; background: transparent; }
+.tweak-toggle-row { display: flex; align-items: center; justify-content: space-between; }
+.tweak-switch { position: relative; width: 40px; height: 22px; }
+.tweak-switch input { display: none; }
+.tweak-switch .slider { position: absolute; inset: 0; background: rgba(255,255,255,0.2); border-radius: 11px; cursor: pointer; transition: 0.3s; }
+.tweak-switch .slider::before { content: ""; position: absolute; width: 16px; height: 16px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: 0.3s; }
+.tweak-switch input:checked + .slider { background: var(--purple); }
+.tweak-switch input:checked + .slider::before { transform: translateX(18px); }
+
+@media (max-width: 1024px) {
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .instagram-grid { grid-template-columns: repeat(3, 1fr); }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .photo-row { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+  .hero-visual { order: -1; }
+  .hero-img { max-width: 280px; }
+  .hero-content { padding-right: 0; }
+  .nav { padding: 14px 20px; }
+  .nav.scrolled { padding: 10px 20px; }
+  .nav-links { display: none; }
+  .section, .brand-story, .values, .products-wrap, .newsletter { padding: 60px 20px; }
+  .bs-grid { grid-template-columns: 1fr; gap: 32px; }
+  .values-grid { grid-template-columns: 1fr; gap: 24px; }
+  .categories-grid { grid-template-columns: 1fr; }
+  .fragrance-grid { grid-template-columns: 1fr; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .instagram-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .photo-row { grid-template-columns: repeat(2, 1fr); }
+  .fragrance, .instagram { padding: 60px 0; }
+  .fragrance-inner, .instagram-inner, .photo-strip-inner { padding: 0 20px; }
+  .instagram-stats { gap: 16px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  .footer-bottom { flex-direction: column; gap: 6px; }
+  .category-img { width: 100px; height: 100px; }
+}
+
+/* ===== PREMIUM v3 ===== */
+.sparkle-container{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.sparkle{position:absolute;width:3px;height:3px;background:var(--purple-light);border-radius:50%;animation:sparkleFloat 6s ease-in-out infinite;opacity:0}
+.sparkle:nth-child(1){top:12%;left:8%}
+.sparkle:nth-child(2){top:22%;left:85%;animation-delay:-1.2s;width:2px;height:2px}
+.sparkle:nth-child(3){top:45%;left:15%;animation-delay:-2.4s}
+.sparkle:nth-child(4){top:65%;left:92%;animation-delay:-3.6s;width:2px;height:2px}
+.sparkle:nth-child(5){top:78%;left:5%;animation-delay:-4.8s}
+.sparkle:nth-child(6){top:35%;left:78%;animation-delay:-1.8s;width:4px;height:4px}
+.sparkle:nth-child(7){top:55%;left:45%;animation-delay:-3s;width:2px;height:2px}
+.sparkle:nth-child(8){top:88%;left:60%;animation-delay:-5s}
+.sparkle:nth-child(9){top:8%;left:50%;animation-delay:-2s;width:4px;height:4px}
+.sparkle:nth-child(10){top:72%;left:28%;animation-delay:-4s}
+@keyframes sparkleFloat{0%,100%{opacity:0;transform:translateY(0) scale(0)}20%{opacity:.8}50%{opacity:.4;transform:translateY(-60px) scale(1)}80%{opacity:.1}}
+.hero-watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--font-heading);font-size:clamp(100px,16vw,260px);font-weight:700;color:rgba(112,105,188,.03);white-space:nowrap;pointer-events:none;z-index:0;letter-spacing:-6px;user-select:none}
+.hero-visual::before{content:"";position:absolute;inset:-14px;border-radius:calc(var(--radius) + 14px);border:2px dashed rgba(112,105,188,.15);animation:heroDashRotate 35s linear infinite}
+@keyframes heroDashRotate{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.hero-decorative-line{position:absolute;bottom:60px;left:48px;width:80px;height:1px;background:linear-gradient(to right,var(--purple),transparent)}
+.hero-title em::after{content:"";position:absolute;bottom:2px;left:0;right:0;height:6px;background:rgba(112,105,188,.15);z-index:-1;border-radius:2px}
+.nav-logo::after{content:"";position:absolute;bottom:-2px;left:0;width:24px;height:2px;background:var(--purple);border-radius:1px}
+.marquee{background:var(--navy);overflow:hidden;padding:14px 0;position:relative;z-index:1}
+.marquee::before,.marquee::after{content:"";position:absolute;top:0;bottom:0;width:60px;z-index:2;pointer-events:none}
+.marquee::before{left:0;background:linear-gradient(to right,var(--navy),transparent)}
+.marquee::after{right:0;background:linear-gradient(to left,var(--navy),transparent)}
+.marquee-track{display:flex;animation:marqueeScroll 28s linear infinite;white-space:nowrap}
+.marquee-item{display:inline-flex;align-items:center;gap:16px;padding:0 24px;font-size:11.5px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.65);flex-shrink:0}
+.marquee-dot{width:4px;height:4px;border-radius:50%;background:var(--purple-light);flex-shrink:0;opacity:.7}
+@keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.wave-divider{width:100%;overflow:hidden;line-height:0;position:relative;z-index:1}
+.wave-divider svg{display:block;width:100%;height:50px}
+.wave-purple svg path{fill:#F0EDF8}
+.wave-cream svg path{fill:var(--cream)}
+.wave-white svg path{fill:var(--white)}
+.bs-img-accent{position:absolute;bottom:-16px;right:-16px;width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--purple-pale),var(--purple-light));opacity:.25;filter:blur(25px);z-index:-1}
+.bs-signature{font-family:var(--font-heading);font-size:20px;font-style:italic;color:var(--purple);margin-top:8px}
+.photo-strip::before{content:"";position:absolute;top:50%;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--purple-pale),transparent);opacity:.5}
+.values::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:180px;height:1px;background:linear-gradient(to right,transparent,var(--purple-pale),transparent)}
+.value-card{background:rgba(255,255,255,.55)!important;backdrop-filter:blur(12px)!important;-webkit-backdrop-filter:blur(12px)!important;border:1px solid rgba(255,255,255,.8)!important;border-radius:var(--radius)!important}
+.value-card:hover{border-color:var(--purple-pale)!important;box-shadow:0 16px 40px rgba(112,105,188,.1)!important}
+.value-card:hover .value-icon{background:linear-gradient(135deg,var(--purple),var(--purple-light))!important}
+.value-card:hover .value-icon svg{stroke:white!important}
+.fragrance-card{background:rgba(244,244,246,.5)!important;backdrop-filter:blur(8px)!important;-webkit-backdrop-filter:blur(8px)!important;border:1px solid rgba(229,229,235,.5)!important}
+.insta-stat-number::after{content:"";position:absolute;bottom:-4px;left:0;width:100%;height:3px;background:var(--purple-pale);border-radius:2px}
+.newsletter::before{content:"";position:absolute;top:-50%;right:-20%;width:350px;height:350px;border-radius:50%;background:rgba(255,255,255,.07);pointer-events:none}
+.newsletter::after{content:"";position:absolute;bottom:-30%;left:-10%;width:250px;height:250px;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none}
+.newsletter-form{border:2px solid transparent!important}
+.newsletter-form:focus-within{border-color:var(--purple)!important}
+.footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(255,255,255,.1),transparent)}
+.section-label{display:flex!important;align-items:center!important;gap:10px!important}
+.section-label::after{content:""!important;flex:1!important;height:1px!important;background:rgba(14,122,130,.15)!important}
+.category-badge{background:rgba(255,255,255,.85)!important;backdrop-filter:blur(8px)!important;border:1px solid rgba(112,105,188,.1)!important}
+.product-card:hover{border-color:var(--purple-pale)!important}
+@media(max-width:768px){.hero-watermark{font-size:60px}.marquee-item{font-size:10px}.hero-visual::before{display:none}.hero-decorative-line{display:none}}
+
+</style>
+</head>
+<body>
+<div class="sparkle-container"><div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div><div class="sparkle"></div></div>
+<nav class="nav" id="nav">
+  <div class="nav-logo">florence <span>by mills</span></div>
+  <ul class="nav-links">
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#values">Values</a></li>
+    <li><a href="#fragrance">Fragrance</a></li>
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#shop" class="nav-cta">Shop All</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-watermark">florence</div>
+  <div class="hero-decorative-line"></div>
+  <div class="hero-grid">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Clean Beauty by Millie Bobby Brown</p>
+      <h1 class="hero-title">Beauty that feels <em>like you</em></h1>
+      <p class="hero-subtitle">Vegan, cruelty-free skincare and makeup that celebrates your natural glow &mdash; because the best version of you is already there.</p>
+      <div class="hero-buttons">
+        <a href="#shop" class="btn btn-primary">Discover the Collection</a>
+        <a href="#story" class="btn btn-outline">Our Philosophy</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="img/GoDP_2YWgAAj-Sp.jpg" alt="Millie Bobby Brown" class="hero-img" loading="eager">
+    </div>
+  </div>
+</section>
+
+<section class="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item">vegan<span class="marquee-dot"></span></span>
+    <span class="marquee-item">cruelty-free<span class="marquee-dot"></span></span>
+    <span class="marquee-item">clean beauty<span class="marquee-dot"></span></span>
+    <span class="marquee-item">glow forward<span class="marquee-dot"></span></span>
+    <span class="marquee-item">dreamy dew<span class="marquee-dot"></span></span>
+    <span class="marquee-item">cheeky pop<span class="marquee-dot"></span></span>
+    <span class="marquee-item">paraben-free<span class="marquee-dot"></span></span>
+    <span class="marquee-item">vegan<span class="marquee-dot"></span></span>
+    <span class="marquee-item">cruelty-free<span class="marquee-dot"></span></span>
+    <span class="marquee-item">clean beauty<span class="marquee-dot"></span></span>
+    <span class="marquee-item">glow forward<span class="marquee-dot"></span></span>
+    <span class="marquee-item">dreamy dew<span class="marquee-dot"></span></span>
+    <span class="marquee-item">cheeky pop<span class="marquee-dot"></span></span>
+    <span class="marquee-item">paraben-free<span class="marquee-dot"></span></span>
+  </div>
+</section>
+
+<section class="brand-story" id="story">
+  <div class="bs-grid">
+    <div class="bs-img-wrap reveal">
+        <img src="img/instagram_Cz4PuEJPBwC.jpg" alt="Millie Bobby Brown" class="bs-img" loading="lazy">
+        <div class="bs-img-accent"></div>
+    </div>
+    <div class="bs-text reveal">
+      <p class="section-label">Our Founder</p>
+      <h2 class="section-title">Hi, I&rsquo;m <em style="font-style:italic;color:var(--purple);">Millie</em></h2>
+      <p>I created florence by mills because I believe beauty should be fun, effortless, and above all &mdash; kind. Every product is vegan, cruelty-free, and made with clean ingredients that actually work.</p>
+      <p>Named after my great-grandmother Florence, this brand is all about embracing who you are. No filters, no rules &mdash; just you, glowing.</p>
+      <p class="bs-signature">Millie x</p>
+    </div>
+  </div>
+</section>
+
+<section class="photo-strip">
+  <div class="photo-strip-inner">
+    <div class="photo-strip-title">
+      <p class="section-label">Millie&rsquo;s World</p>
+      <h2 class="section-title" style="display:inline-block;">Behind the <em style="font-style:italic;color:var(--purple);">scenes</em></h2>
+    </div>
+    <div class="photo-row">
+      <div class="photo-item reveal"><img src="img/instagram_Cc3LX4xKubo.jpg" alt="Millie Bobby Brown" loading="lazy"></div>
+      <div class="photo-item reveal"><img src="img/590429988_18297054214277885_6678781489414416839_n.jpg" alt="Millie Bobby Brown" loading="lazy"></div>
+      <div class="photo-item reveal"><img src="img/instagram_Cb-okTkB_eT.jpg" alt="Millie Bobby Brown" loading="lazy"></div>
+      <div class="photo-item reveal"><img src="img/651919888_18069295922271806_3637257727842645006_n.jpg" alt="Millie Bobby Brown" loading="lazy"></div>
+      <div class="photo-item reveal"><img src="img/471724249_18255528916277885_4695357316991065403_n.jpg" alt="Millie Bobby Brown" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<div class="wave-divider wave-purple"><svg viewBox="0 0 1440 50" preserveAspectRatio="none"><path d="M0,25 C240,0 480,50 720,25 C960,0 1200,50 1440,25 L1440,50 L0,50 Z"/></svg></div>
+
+<section class="values" id="values">
+  <div style="text-align:center;">
+    <p class="section-label">Our Promise</p>
+    <h2 class="section-title" style="display:inline-block;">Beauty, <em style="font-style:italic;color:var(--purple);">unfiltered</em></h2>
+  </div>
+  <div class="values-grid">
+    <div class="value-card reveal">
+      <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L3 7l9 5 9-5-9-5z"/><path d="M3 17l9 5 9-5"/><path d="M3 12l9 5 9-5"/></svg></div>
+      <h3 class="value-title">100% Vegan</h3>
+      <p class="value-desc">Every formula is made without animal-derived ingredients.</p>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l2.5 2.5L16 9"/></svg></div>
+      <h3 class="value-title">Cruelty-Free</h3>
+      <p class="value-desc">Never tested on animals. PETA-certified, always.</p>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon"><svg viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7l-8 4-8-4V5l8 4 8-4v2z"/><path d="M4 11l8 4 8-4"/></svg></div>
+      <h3 class="value-title">Clean Formulas</h3>
+      <p class="value-desc">No parabens, sulfates, or phthalates. Just good ingredients.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wave-divider wave-cream"><svg viewBox="0 0 1440 50" preserveAspectRatio="none"><path d="M0,25 C360,50 720,0 1080,25 C1260,38 1380,25 1440,25 L1440,50 L0,50 Z"/></svg></div>
+
+<section class="section" id="shop">
+  <p class="section-label">Explore</p>
+  <h2 class="section-title">Find your <em style="font-style:italic;color:var(--purple);">glow</em></h2>
+  <p class="section-desc">From dreamy moisturizers to cheeky blush sticks &mdash; your perfect routine is waiting.</p>
+  <div class="categories-grid">
+    <div class="category-card cc-skincare reveal">
+      <span class="category-badge">Skincare</span>
+      <img class="category-img" src="img/dreamy_dew.jpg" alt="Skincare" loading="lazy">
+      <div class="category-card-content"><h3>Glow Forward</h3><p>Cleansers, serums, and moisturizers.</p><span class="category-link">Shop Skincare &rarr;</span></div>
+    </div>
+    <div class="category-card cc-makeup reveal">
+      <span class="category-badge">Makeup</span>
+      <img class="category-img" src="img/stay_plush.png" alt="Makeup" loading="lazy">
+      <div class="category-card-content"><h3>Cheeky Pop</h3><p>Lip oils, blush sticks, and balms.</p><span class="category-link">Shop Makeup &rarr;</span></div>
+    </div>
+    <div class="category-card cc-fragrance reveal">
+      <span class="category-badge">Fragrance</span>
+      <img class="category-img" src="img/love_core.jpg" alt="Fragrance" loading="lazy">
+      <div class="category-card-content"><h3>Soft Girl</h3><p>Hair &amp; body mists that linger.</p><span class="category-link">Shop Fragrance &rarr;</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="products-wrap">
+  <div class="products-inner">
+    <p class="section-label">Bestsellers</p>
+    <h2 class="section-title">What everyone&rsquo;s <em style="font-style:italic;color:var(--purple);">obsessed with</em></h2>
+    <p class="section-desc">The products that keep selling out.</p>
+    <div class="products-grid">
+      <div class="product-card reveal"><div class="product-image"><span class="product-tag">#1 Best</span><img src="img/dreamy_dew.jpg" alt="Dreamy Dew" loading="lazy"></div><div class="product-info"><p class="product-category">Skincare</p><h4 class="product-name">Dreamy Dew Moisturizer</h4><p class="product-price">$18.00</p></div></div>
+      <div class="product-card reveal"><div class="product-image"><img src="img/stay_plush.png" alt="Stay Plush" loading="lazy"></div><div class="product-info"><p class="product-category">Makeup</p><h4 class="product-name">Stay Plush Lip Oil Tint</h4><p class="product-price">$16.00</p></div></div>
+      <div class="product-card reveal"><div class="product-image"><img src="img/love_core.jpg" alt="Love Core" loading="lazy"></div><div class="product-info"><p class="product-category">Fragrance</p><h4 class="product-name">Love Core Black Cherry Mist</h4><p class="product-price">$18.00</p></div></div>
+      <div class="product-card reveal"><div class="product-image"><img src="img/clear_canvas.jpg" alt="Clear Canvas" loading="lazy"></div><div class="product-info"><p class="product-category">Skincare</p><h4 class="product-name">Clear Canvas Milky Oil Balm</h4><p class="product-price">$22.00</p></div></div>
+      <div class="product-card reveal"><div class="product-image"><img src="img/glow_forward.jpg" alt="Glow Forward" loading="lazy"></div><div class="product-info"><p class="product-category">Skincare</p><h4 class="product-name">Glow Forward Glaze Drops</h4><p class="product-price">$25.00</p></div></div>
+      <div class="product-card reveal"><div class="product-image"><img src="img/butter_creme.jpg" alt="Butter Creme" loading="lazy"></div><div class="product-info"><p class="product-category">Makeup</p><h4 class="product-name">Butter Cr&egrave;me Super Balm</h4><p class="product-price">$15.00</p></div></div>
+      <div class="product-card reveal"><div class="product-image"><img src="img/clean_magic.jpg" alt="Clean Magic" loading="lazy"></div><div class="product-info"><p class="product-category">Skincare</p><h4 class="product-name">Clean Magic Face Wash</h4><p class="product-price">$18.00</p></div></div>
+      <div class="product-card reveal"><div class="product-image"><img src="img/cheeky_pop.jpg" alt="Cheeky Pop" loading="lazy"></div><div class="product-info"><p class="product-category">Makeup</p><h4 class="product-name">Cheeky Pop Blush Sticks</h4><p class="product-price">$18.00</p></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="wave-divider wave-white"><svg viewBox="0 0 1440 50" preserveAspectRatio="none"><path d="M0,25 C240,0 480,50 720,25 C960,0 1200,50 1440,25 L1440,0 L0,0 Z"/></svg></div>
+
+<section class="fragrance" id="fragrance">
+  <div class="fragrance-inner">
+    <div class="fragrance-header">
+      <p class="section-label">New: Hair &amp; Body Mists</p>
+      <h2 class="section-title" style="display:inline-block;">Scents that <em style="font-style:italic;color:var(--purple);">tell a story</em></h2>
+      <p class="section-desc" style="margin:0 auto;">Three signature fragrances designed to layer and linger.</p>
+    </div>
+    <div class="fragrance-grid">
+      <div class="fragrance-card reveal"><img class="fragrance-card-img" src="img/love_core.jpg" alt="Love Core" loading="lazy"><h3 class="fragrance-name">Love Core Black Cherry</h3><p class="fragrance-desc">Sweet, bold, and a little bit flirty. Dark cherry with warm vanilla.</p></div>
+      <div class="fragrance-card reveal"><img class="fragrance-card-img" src="img/coastal_chic.jpg" alt="Coastal Chic" loading="lazy"><h3 class="fragrance-name">Coastal Chic Amber Fleur</h3><p class="fragrance-desc">Salty air, sun-warmed skin, and blooming amber florals.</p></div>
+      <div class="fragrance-card reveal"><img class="fragrance-card-img" src="img/soft_girl.jpg" alt="Soft Girl" loading="lazy"><h3 class="fragrance-name">Soft Girl Sheer Vanilla</h3><p class="fragrance-desc">The clean-girl aesthetic in a bottle. Sheer vanilla warmth.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="instagram">
+  <div class="instagram-inner">
+    <div class="instagram-header">
+      <div><p class="section-label">Join the Community</p><h2 class="section-title">@florencebymills</h2></div>
+      <div class="instagram-stats"><div><div class="insta-stat-number">4M</div><div class="insta-stat-label">Followers</div></div><div><div class="insta-stat-number">2.3K</div><div class="insta-stat-label">Posts</div></div></div>
+    </div>
+    <div class="instagram-grid">
+      <div class="insta-tile reveal"><img src="img/instagram_DKPr_VjpVzd.jpg" alt="florencebymills" loading="lazy"><div class="insta-tile-overlay"><span>@florencebymills</span></div></div>
+      <div class="insta-tile reveal"><img src="img/GoDP_2BWwAAfKkw.jpg" alt="florencebymills" loading="lazy"><div class="insta-tile-overlay"><span>@florencebymills</span></div></div>
+      <div class="insta-tile reveal"><img src="img/Ggy-GNyXwAIvUgl.jpg" alt="florencebymills" loading="lazy"><div class="insta-tile-overlay"><span>@florencebymills</span></div></div>
+      <div class="insta-tile reveal"><img src="img/instagram_Cnuqy1xvFZI.jpg" alt="florencebymills" loading="lazy"><div class="insta-tile-overlay"><span>@florencebymills</span></div></div>
+      <div class="insta-tile reveal"><img src="img/4603fd15214686b06b16917fde93a17f.jpg" alt="florencebymills" loading="lazy"><div class="insta-tile-overlay"><span>@florencebymills</span></div></div>
+      <div class="insta-tile reveal"><img src="img/instagram_CSpQfu6pYoo.jpg" alt="florencebymills" loading="lazy"><div class="insta-tile-overlay"><span>@florencebymills</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter">
+  <div class="newsletter-inner reveal">
+    <p class="section-label">Stay in the Glow</p>
+    <h2 class="section-title">Get 10% off your first order</h2>
+    <p class="section-desc" style="margin:0 auto;">New drops, exclusive offers, and Millie&rsquo;s personal picks &mdash; straight to your inbox.</p>
+    <div class="newsletter-form"><input type="email" placeholder="Your email address"><button>Subscribe</button></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div><div class="footer-brand">florence by mills</div><p class="footer-desc">Clean, vegan, cruelty-free beauty by Millie Bobby Brown.</p></div>
+    <div class="footer-col"><h4>Shop</h4><ul><li><a href="#">Skincare</a></li><li><a href="#">Makeup</a></li><li><a href="#">Fragrance</a></li><li><a href="#">Bestsellers</a></li></ul></div>
+    <div class="footer-col"><h4>About</h4><ul><li><a href="#">Our Story</a></li><li><a href="#">Ingredients</a></li><li><a href="#">Sustainability</a></li></ul></div>
+    <div class="footer-col"><h4>Connect</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">TikTok</a></li><li><a href="#">Contact Us</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>&copy; 2026 florence by mills</span><span>Clean beauty, always.</span></div>
+</footer>
+
+<button class="tweaks-toggle" id="tweaksBtn" title="Tweaks"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2"/></svg></button>
+<div class="tweaks-panel" id="tweaksPanel">
+  <h3>Tweaks</h3>
+  <div class="tweak-group"><label>Accent Color</label><input type="color" id="accentColor" value="#7069BC"></div>
+  <div class="tweak-group"><label>Font Size</label><input type="range" id="fontScale" min="80" max="120" value="100"></div>
+  <div class="tweak-group"><div class="tweak-toggle-row"><label style="margin:0;">Dark Mode</label><label class="tweak-switch"><input type="checkbox" id="darkMode"><span class="slider"></span></label></div></div>
+  <div class="tweak-group"><div class="tweak-toggle-row"><label style="margin:0;">Animations</label><label class="tweak-switch"><input type="checkbox" id="animToggle" checked><span class="slider"></span></label></div></div>
+</div>
+
+<script>
+(function() {
+  var nav = document.getElementById("nav");
+  window.addEventListener("scroll", function() {
+    if (window.scrollY > 50) nav.classList.add("scrolled");
+    else nav.classList.remove("scrolled");
+  });
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) entry.target.classList.add("visible");
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -30px 0px" });
+  document.querySelectorAll(".reveal").forEach(function(el) { observer.observe(el); });
+
+  var btn = document.getElementById("tweaksBtn");
+  var panel = document.getElementById("tweaksPanel");
+  btn.addEventListener("click", function(e) { e.stopPropagation(); panel.classList.toggle("open"); });
+  document.addEventListener("click", function(e) {
+    if (!panel.contains(e.target) && e.target !== btn) panel.classList.remove("open");
+  });
+
+  document.getElementById("accentColor").addEventListener("input", function(e) {
+    document.documentElement.style.setProperty("--purple", e.target.value);
+  });
+  document.getElementById("fontScale").addEventListener("input", function(e) {
+    document.documentElement.style.fontSize = (e.target.value / 100 * 16) + "px";
+  });
+
+  document.getElementById("darkMode").addEventListener("change", function(e) {
+    var r = document.documentElement.style;
+    if (e.target.checked) {
+      r.setProperty("--cream", "#1a1a2e"); r.setProperty("--white", "#16213e");
+      r.setProperty("--gray-bg", "#0f0f23"); r.setProperty("--navy", "#e0ddf0");
+      r.setProperty("--text", "#e0ddf0"); r.setProperty("--text-muted", "#8a85b0");
+      r.setProperty("--gray-border", "#2a2a4a");
+    } else {
+      r.setProperty("--cream", "#FDFBF7"); r.setProperty("--white", "#FFFFFF");
+      r.setProperty("--gray-bg", "#F4F4F6"); r.setProperty("--navy", "#272D45");
+      r.setProperty("--text", "#272D45"); r.setProperty("--text-muted", "#676986");
+      r.setProperty("--gray-border", "#E5E5EB");
+    }
+  });
+
+  document.getElementById("animToggle").addEventListener("change", function(e) {
+    var on = e.target.checked;
+    document.querySelectorAll(".reveal").forEach(function(el) {
+      el.style.transition = on ? "" : "none";
+    });
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener("click", function(e) {
+      e.preventDefault();
+      var t = document.querySelector(this.getAttribute("href"));
+      if (t) t.scrollIntoView({ behavior: "smooth" });
+    });
+  });
+})();
+</script>
+</body>
+</html>
