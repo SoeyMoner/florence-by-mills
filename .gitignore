@@ -1,12 +1,4 @@
 ﻿node_modules/
 out/
-.cache/
-.remotion/
 *.py
-brand-instagram.html
-brand-research.html
-page-full.html
-img_mapping.json
-index_v2_backup.html
-package-lock.json
 .DS_Store
